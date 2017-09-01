@@ -6,25 +6,61 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+
+//Firebase
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AuthProvider } from '../providers/auth/auth';
+import { NovoUsuarioPage } from "../pages/novo-usuario/novo-usuario";
+import { ReservasPage } from "../pages/reservas/reservas";
+import { EquipamentosPage } from "../pages/equipamentos/equipamentos";
+import { EquipamentosProvider } from '../providers/equipamentos/equipamentos';
+import { AngularFireDatabaseModule } from "angularfire2/database";
+import { EditEquipamentosPage } from "../pages/edit-equipamentos/edit-equipamentos";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBsLCPusCRHe3dLid5c1g9V79t6uCmlnmg",
+  authDomain: "reservaifpioeiras.firebaseapp.com",
+  databaseURL: "https://reservaifpioeiras.firebaseio.com",
+  projectId: "reservaifpioeiras",
+  storageBucket: "reservaifpioeiras.appspot.com",
+  messagingSenderId: "1004870956440"
+};
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage,
+    NovoUsuarioPage,
+    EquipamentosPage,
+    ReservasPage,
+    EditEquipamentosPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage,
+    NovoUsuarioPage,
+    EquipamentosPage,
+    ReservasPage,
+    EditEquipamentosPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    AuthProvider,
+    EquipamentosProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }
