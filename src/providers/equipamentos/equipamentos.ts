@@ -26,16 +26,17 @@ export class EquipamentosProvider {
     return this.equipamentos;
   }
 
-  public save(equipamento: any) {
-    console.log(equipamento.key);
-    if (equipamento.key) {
-      return this.equipamentos.update(equipamento.key, { nome: equipamento.nome, tombo: equipamento.tombo, ativo: equipamento.ativo });
+  public save(equipamento: Equipamento) {
+    console.log("salvando chave" + equipamento.$key);
+    if (equipamento.$key) {
+      return this.equipamentos.update(equipamento.$key, { nome: equipamento.nome, tombo: equipamento.tombo, ativo: equipamento.ativo });
     } else {
       return this.equipamentos.push({ nome: equipamento.nome, tombo: equipamento.tombo, ativo: equipamento.ativo });
     }
   }
 
-  public delete(equipamento: any) {
+  public delete(equipamento: Equipamento) {
+    console.log("Deletando chave " + equipamento.$key);
     return this.equipamentos.remove(equipamento.$key);
   }
 }

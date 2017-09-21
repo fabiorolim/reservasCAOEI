@@ -22,7 +22,8 @@ export class NovoUsuarioPage {
   user: User = new User();
   @ViewChild('form') form: NgForm;
 
-  constructor(public navCtrl: NavController, public toasController: ToastController, private authProvider: AuthProvider) {
+  constructor(public navCtrl: NavController, public toasController: ToastController,
+    private authProvider: AuthProvider) {
   }
 
   ionViewDidLoad() {
@@ -46,5 +47,4 @@ export class NovoUsuarioPage {
       toast.present();
     }
   }
-
 }

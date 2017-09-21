@@ -18,6 +18,9 @@ import { EquipamentosPage } from "../pages/equipamentos/equipamentos";
 import { EquipamentosProvider } from '../providers/equipamentos/equipamentos';
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { EditEquipamentosPage } from "../pages/edit-equipamentos/edit-equipamentos";
+import { DetalhesPage } from '../pages/detalhes/detalhes';
+import { ReservasProvider } from '../providers/reservas/reservas';
+import { EditReservaPage } from '../pages/edit-reserva/edit-reserva';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBsLCPusCRHe3dLid5c1g9V79t6uCmlnmg",
@@ -36,7 +39,9 @@ const firebaseConfig = {
     NovoUsuarioPage,
     EquipamentosPage,
     ReservasPage,
-    EditEquipamentosPage
+    EditEquipamentosPage,
+    DetalhesPage,
+    EditReservaPage
   ],
   imports: [
     BrowserModule,
@@ -53,14 +58,17 @@ const firebaseConfig = {
     NovoUsuarioPage,
     EquipamentosPage,
     ReservasPage,
-    EditEquipamentosPage
+    EditEquipamentosPage,
+    DetalhesPage,
+    EditReservaPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthProvider,
-    EquipamentosProvider
+    EquipamentosProvider,
+    ReservasProvider
   ]
 })
 export class AppModule { }

@@ -14,15 +14,20 @@
 
 
 <ion-content padding>
-  <form novalidate>
+  <form novalidate #form="ngForm">
     <ion-list>
       <ion-item>
         <ion-label stacked>Nome</ion-label>
-        <ion-input type="text" required [(ngModel)]="nomeEquipamento" name="nomeEquipamento"></ion-input>
+        <ion-input type="text" required [(ngModel)]="nomeEquipamento" name="nome" #nome="ngModel"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="nome.errors && (nome.touched || nome.dirty)" class="text-danger">
+        Campo nome obrigatório
       </ion-item>
       <ion-item>
         <ion-label stacked>Tombo</ion-label>
-        <ion-input type="text" required [(ngModel)]="tomboEquipamento" name="tomboEquipamento"></ion-input>
+        <ion-input type="text" required [(ngModel)]="tomboEquipamento" name="tombo" #tombo="ngModel"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="tombo.errors && (tombo.dirty || tombo.touched)" class="text-danger">
       </ion-item>
     </ion-list>
     <ion-item>
@@ -30,7 +35,7 @@
       <ion-toggle [(ngModel)]="ativoEquipamento" name="ativoEquipamento"></ion-toggle>
     </ion-item>
     <div padding>
-      <button ion-button block color="primary" (click)="save()">Salvar</button>
+      <button [disabled]="!form.form.valid" ion-button block color="primary" (click)="save()">Salvar</button>
     </div>
   </form>
 </ion-content>

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EquipamentosProvider } from "../../providers/equipamentos/equipamentos";
 import { Equipamento } from "../../model/equipamentosModel";
+import { NgForm } from "@angular/forms/";
 
 /**
  * Generated class for the EditEquipamentosPage page.
@@ -17,14 +18,17 @@ import { Equipamento } from "../../model/equipamentosModel";
 })
 export class EditEquipamentosPage {
 
+  
+  @ViewChild('form') form: NgForm;
+  
+  public equipamento: Equipamento;
   nomeEquipamento: string;
   tomboEquipamento: string;
   keyEquipamento: string;
-  equipamento: Equipamento;
   ativoEquipamento: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public provider: EquipamentosProvider) {
-    
+
     //console.log(this.navParams.data.equipamento);
 
     if (this.navParams.data.equipamento) {
@@ -40,7 +44,9 @@ export class EditEquipamentosPage {
   }
 
   save() {
-    this.provider.save({ nome: this.nomeEquipamento, tombo: this.tomboEquipamento, key: this.keyEquipamento, ativo: this.ativoEquipamento });
+    this.equipamento = { $key: this.keyEquipamento, ativo: this.ativoEquipamento, nome: this.nomeEquipamento, tombo: this.tomboEquipamento };
+    //this.provider.save({ nome: this.nomeEquipamento, tombo: this.tomboEquipamento, key: this.keyEquipamento, ativo: this.ativoEquipamento });
+    this.provider.save(this.equipamento);
     console.log(this.nomeEquipamento, this.tomboEquipamento, this.keyEquipamento);
     this.navCtrl.pop();
   }
