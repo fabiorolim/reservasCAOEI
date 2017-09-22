@@ -15,20 +15,36 @@
 
 <ion-content>
   <ion-item>
+    <h1>Dados do patrimônio</h1>
+    <h3>Nome: {{ reserva.equipamento.nome }}</h3>
+    <h3>Tombo: {{ reserva.equipamento.tombo }}</h3>
+  </ion-item>
+  <ion-item>
+    <h1>Dados da reserva</h1>
+  </ion-item>
+  <ion-item>
     <ion-label>Data Inicial:</ion-label>
-    <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="reserva.dataInicio"></ion-datetime>
+    <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="reserva.dataInicio" required></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label>Hora Inicial:</ion-label>
-    <ion-datetime displayFormat="h:mm A" [(ngModel)]="reserva.horaInicio" pickerFormat="h mm A"></ion-datetime>
+    <ion-datetime displayFormat="h:mm A" [(ngModel)]="reserva.horaInicio" pickerFormat="h mm A" required></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label>Data Final:</ion-label>
-    <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="reserva.dataFim"></ion-datetime>
+    <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="reserva.dataFim" required></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label>Hora Final:</ion-label>
-    <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="reserva.horaFim"></ion-datetime>
+    <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="reserva.horaFim" required></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Justifique seu uso:</ion-label>
+    <ion-input type="text" [(ngModel)]="reserva.motivo" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Utilizar fora do campus:</ion-label>
+    <ion-toggle [(ngModel)]="reserva.utilizarFora"></ion-toggle>
   </ion-item>
   <div padding>
     <button ion-button color="primary" (click)="reservar()" block>Confirmar</button>

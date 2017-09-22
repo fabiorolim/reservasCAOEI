@@ -26,6 +26,24 @@ export class EquipamentosProvider {
     return this.equipamentos;
   }
 
+  public getAtivos(caracter?: string) {
+    if (caracter != '') {
+      this.equipamentos = this.db.list("/equipamentos", { query: { orderByChild: 'ativo', equalTo: true } });
+    } else {
+      this.equipamentos = this.db.list("/equipamentos", { query: { orderByChild: 'ativo', equalTo: true } });
+    }
+    return this.equipamentos;
+  }
+
+  public getInativos(caracter?: string) {
+    if (caracter != '') {
+      this.equipamentos = this.db.list("/equipamentos", { query: { orderByChild: 'ativo', equalTo: false } });
+    } else {
+      this.equipamentos = this.db.list("/equipamentos", { query: { orderByChild: 'ativo', equalTo: false } });
+    }
+    return this.equipamentos;
+  }
+
   public save(equipamento: Equipamento) {
     console.log("salvando chave" + equipamento.$key);
     if (equipamento.$key) {

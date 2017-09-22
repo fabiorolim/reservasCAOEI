@@ -5,8 +5,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from "../pages/login/login";
-import { ReservasPage } from "../pages/reservas/reservas";
 import { EquipamentosPage } from "../pages/equipamentos/equipamentos";
+import { DevolucoesPage } from '../pages/devolucoes/devolucoes';
+import { ReservasPage } from '../pages/reservas/reservas';
+import { ReservastabPage } from '../pages/reservastab/reservastab';
 
 @Component({
   templateUrl: 'app.html'
@@ -25,8 +27,9 @@ export class MyApp {
       splashScreen.hide();
 
       this.pages = [{ title: 'Login', component: LoginPage },
-                    {title: 'Equipamentos', component: EquipamentosPage},
-                    {title: 'Reservas', component: ReservasPage}];
+      { title: 'Equipamentos', component: EquipamentosPage },
+      { title: 'Reservas', component: ReservastabPage },
+      { title: 'Devoluções', component: DevolucoesPage }];
 
     });
   }

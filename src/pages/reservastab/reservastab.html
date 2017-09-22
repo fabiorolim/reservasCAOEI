@@ -1,0 +1,12 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+        <ion-title>Reservas</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-tabs>
+    <ion-tab [root]="reservasRoot" tabTitle="Reservas" tabIcon="list-box"></ion-tab>
+    <ion-tab [root]="efetivarRoot" tabTitle="Efetivar" tabIcon="checkmark-circle-outline"></ion-tab>
+</ion-tabs>

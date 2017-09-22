@@ -15,23 +15,44 @@
 <ion-content>
 
   <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
-
-  <ion-list>
-    <ion-item-sliding *ngFor="let eq of equipamentos | async">
-      <ion-item (click)="abrir(eq)">
-        {{ eq.$key }} - {{ eq.nome }}
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button icon-only color="primary" (click)="editEquipamento(eq)">
+  <div padding>
+    <ion-segment [(ngModel)]="equipamento">
+      <ion-segment-button value="ativos">Ativos</ion-segment-button>
+      <ion-segment-button value="inativos">Inativos</ion-segment-button>
+    </ion-segment>
+  </div>
+  <div [ngSwitch]="equipamento">
+    <ion-list *ngSwitchCase="'ativos'">
+      <ion-item-sliding *ngFor="let eq of equipamentosAtivos | async">
+        <ion-item (click)="abrir(eq)">
+          {{ eq.nome }}
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button icon-only color="primary" (click)="editEquipamento(eq)">
           <ion-icon name="create"></ion-icon>
         </button>
-        <button ion-button icon-only color="danger" (click)="deleteEquipamento(eq)">
+          <button ion-button icon-only color="danger" (click)="deleteEquipamento(eq)">
           <ion-icon name="trash"></ion-icon>
         </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
-
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+    <ion-list *ngSwitchCase="'inativos'">
+      <ion-item-sliding *ngFor="let eq of equipamentosInativos | async">
+        <ion-item>
+          {{ eq.nome }}
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button icon-only color="primary" (click)="editEquipamento(eq)">
+            <ion-icon name="create"></ion-icon>
+          </button>
+          <button ion-button icon-only color="danger" (click)="deleteEquipamento(eq)">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
   <ion-fab top right>
     <button ion-fab mini (click)="novoEquipamento()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>

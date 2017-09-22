@@ -42,7 +42,7 @@ export class LoginPage {
     if (this.form.form.valid) {
       this.fireAuth.loginEmail(this.user)
         .then(() => {
-          this.navCtrl.setRoot(HomePage);
+          this.navCtrl.setRoot(HomePage, {usuario: this.user});
         })
         .catch((error: any) => {
           let toast = this.toastController.create({ duration: 3000, position: 'bottom' });

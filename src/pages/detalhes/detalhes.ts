@@ -16,7 +16,7 @@ import { EditReservaPage } from '../edit-reserva/edit-reserva';
   templateUrl: 'detalhes.html',
 })
 export class DetalhesPage {
-  
+
   equipamento: Equipamento;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -30,8 +30,8 @@ export class DetalhesPage {
 
   }
 
-  public reservar() {
-    this.navCtrl.push(EditReservaPage);
+  public reservar(equipamento: Equipamento) {
+    this.navCtrl.push(EditReservaPage, { equipamento: equipamento });
     //return this.reservasProvider.save();
   }
 

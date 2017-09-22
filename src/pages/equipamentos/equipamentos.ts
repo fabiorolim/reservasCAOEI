@@ -21,7 +21,9 @@ import { DetalhesPage } from '../detalhes/detalhes';
 
 export class EquipamentosPage {
 
-  equipamentos: FirebaseListObservable<Equipamento[]>;
+  equipamentosAtivos: FirebaseListObservable<Equipamento[]>;
+  equipamentosInativos: FirebaseListObservable<Equipamento[]>;
+  equipamento: Equipamento;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private equipamentosProvider: EquipamentosProvider, public loading: LoadingController) {
@@ -31,16 +33,16 @@ export class EquipamentosPage {
   //Invoca o provider para carregar na lista de equipamentos todos os equipamentos
   initializeItems() {
     //Ajustar aqui o progresso para finalizar logo após carregar a lista
-    let load = this.loading.create({content: 'Aguarde...', duration: 3000});
-    this.equipamentos = this.equipamentosProvider.getAll();
+    let load = this.loading.create({ content: 'Aguarde...', duration: 3000 });
+    this.equipamentosInativos = this.equipamentosProvider.getInativos();
+    this.equipamentosAtivos = this.equipamentosProvider.getAtivos();
     load.present();
-    console.log(this.equipamentos);
   }
 
   search(event) {
     let val = event.target.value;
     if (val && val.trim() != '') {
-      this.equipamentos = this.equipamentosProvider.getAll(val);
+      this.equipamentosAtivos = this.equipamentosProvider.getAtivos(val);
     } else {
       this.initializeItems();
     }

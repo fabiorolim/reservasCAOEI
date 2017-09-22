@@ -8,12 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 
-//Firebase
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AuthProvider } from '../providers/auth/auth';
 import { NovoUsuarioPage } from "../pages/novo-usuario/novo-usuario";
-import { ReservasPage } from "../pages/reservas/reservas";
 import { EquipamentosPage } from "../pages/equipamentos/equipamentos";
 import { EquipamentosProvider } from '../providers/equipamentos/equipamentos';
 import { AngularFireDatabaseModule } from "angularfire2/database";
@@ -21,6 +16,16 @@ import { EditEquipamentosPage } from "../pages/edit-equipamentos/edit-equipament
 import { DetalhesPage } from '../pages/detalhes/detalhes';
 import { ReservasProvider } from '../providers/reservas/reservas';
 import { EditReservaPage } from '../pages/edit-reserva/edit-reserva';
+import { DevolucoesPage } from '../pages/devolucoes/devolucoes';
+
+//Firebase
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AuthProvider } from '../providers/auth/auth';
+import { ReservasPage } from '../pages/reservas/reservas';
+import { EfetivarPage } from '../pages/efetivar/efetivar';
+import { ReservastabPage } from '../pages/reservastab/reservastab';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyBsLCPusCRHe3dLid5c1g9V79t6uCmlnmg",
@@ -38,10 +43,11 @@ const firebaseConfig = {
     LoginPage,
     NovoUsuarioPage,
     EquipamentosPage,
-    ReservasPage,
     EditEquipamentosPage,
     DetalhesPage,
-    EditReservaPage
+    EditReservaPage,
+    DevolucoesPage,
+    ReservastabPage
   ],
   imports: [
     BrowserModule,
@@ -57,10 +63,11 @@ const firebaseConfig = {
     LoginPage,
     NovoUsuarioPage,
     EquipamentosPage,
-    ReservasPage,
     EditEquipamentosPage,
     DetalhesPage,
-    EditReservaPage
+    EditReservaPage,
+    DevolucoesPage,
+    ReservastabPage
   ],
   providers: [
     StatusBar,

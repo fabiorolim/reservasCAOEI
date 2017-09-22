@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { User } from '../../providers/auth/user';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +8,9 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  public usuario: User;
 
+  constructor(public navCtrl: NavController, public navParms: NavParams) {
+    this.usuario = this.navParms.get('usuario');
   }
-
 }

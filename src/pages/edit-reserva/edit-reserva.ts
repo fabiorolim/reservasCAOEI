@@ -16,18 +16,20 @@ import { Reserva } from '../../model/reservasModel';
 })
 export class EditReservaPage {
 
-  reserva: Reserva;
+  reserva: Reserva = new Reserva();
   titulo: string;
+  data: Date;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
+  constructor(public navCtrl: NavController, public navParams: NavParams,
     public reservasProvider: ReservasProvider) {
+    this.reserva.equipamento = this.navParams.get('equipamento');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditReservaPage');
   }
 
-  reservar(){
-    return this.reservasProvider.save();
+  reservar() {
+    return this.reservasProvider.save(this.reserva);
   }
 }
