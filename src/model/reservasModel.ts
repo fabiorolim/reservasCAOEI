@@ -18,7 +18,7 @@ export class Reserva {
     utilizarFora: boolean;
     status?: string;
     //aberta
-    //efetiva
+    //efetivada
     //cancelada
     devolucao?: Devolucao;
     //Chave do usuário que faz a reserva

@@ -16,7 +16,7 @@
 <ion-content padding>
   <ion-item>
     <p>Chave da reserva:</p>
-    <ion-input type="text">Chave</ion-input>
+    <ion-input [(ngModel)] = "reserva.$key" type="text">Chave</ion-input>
   </ion-item>
-  <button ion-button block color="primary">Efetivar</button>
+  <button ion-button block color="primary" (click)="efetivarReserva(reserva)">Efetivar</button>
 </ion-content>

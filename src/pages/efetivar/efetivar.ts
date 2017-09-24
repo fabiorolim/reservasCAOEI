@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ReservasProvider } from '../../providers/reservas/reservas';
+import { Reserva } from '../../model/reservasModel';
 
 /**
  * Generated class for the EfetivarPage page.
@@ -15,14 +17,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class EfetivarPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  reserva: Reserva;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private reservasProvider: ReservasProvider) {
+    this.reserva = new Reserva();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EfetivarPage');
   }
 
-  efetivar(){
-
+  efetivarReserva(reserva: Reserva) {
+    this.reservasProvider.efetivar(reserva);
   }
 }
