@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ReservasProvider } from '../../providers/reservas/reservas';
 import { Reserva } from '../../model/reservasModel';
+import { Equipamento } from '../../model/equipamentosModel';
 
 /**
  * Generated class for the EditReservaPage page.

@@ -65,6 +65,7 @@ export class EquipamentosPage {
 
   //Abre a página de detalhes de cada produto com botão de reserva
   public abrir(equipamento: Equipamento) {
+    console.log(equipamento);
     return this.navCtrl.push(DetalhesPage, { equipamento: equipamento })
   }
 }

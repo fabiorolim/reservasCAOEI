@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Reserva } from '../../model/reservasModel';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { ReservasProvider } from '../../providers/reservas/reservas';
+import { DevolverPage } from '../devolver/devolver';
 
 /**
  * Generated class for the ReservasPage page.
@@ -44,5 +45,9 @@ export class ReservasPage {
 
   deletarReserva(reserva: Reserva) {
     this.reservasProvider.deletarReserva(reserva);
+  }
+
+  devolver(reserva: Reserva) {
+    this.navCtrl.push(DevolverPage, { reserva: reserva });
   }
 }

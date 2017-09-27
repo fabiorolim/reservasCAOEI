@@ -25,6 +25,9 @@ import { AuthProvider } from '../providers/auth/auth';
 import { ReservasPage } from '../pages/reservas/reservas';
 import { EfetivarPage } from '../pages/efetivar/efetivar';
 import { ReservastabPage } from '../pages/reservastab/reservastab';
+import { DevolucoestabPage } from '../pages/devolucoestab/devolucoestab';
+import { DevolucoesProvider } from '../providers/devolucoes/devolucoes';
+import { DevolverPage } from '../pages/devolver/devolver';
 
 
 const firebaseConfig = {
@@ -46,8 +49,9 @@ const firebaseConfig = {
     EditEquipamentosPage,
     DetalhesPage,
     EditReservaPage,
-    DevolucoesPage,
-    ReservastabPage
+    ReservastabPage, 
+    DevolucoestabPage,
+    DevolverPage
   ],
   imports: [
     BrowserModule,
@@ -66,8 +70,9 @@ const firebaseConfig = {
     EditEquipamentosPage,
     DetalhesPage,
     EditReservaPage,
-    DevolucoesPage,
-    ReservastabPage
+    ReservastabPage,
+    DevolucoestabPage,
+    DevolverPage
   ],
   providers: [
     StatusBar,
@@ -75,7 +80,8 @@ const firebaseConfig = {
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthProvider,
     EquipamentosProvider,
-    ReservasProvider
+    ReservasProvider,
+    DevolucoesProvider
   ]
 })
 export class AppModule { }

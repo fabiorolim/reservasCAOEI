@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Devolucao } from '../../model/devolucaoModel';
 
 /**
- * Generated class for the DevolucoesPage page.
+ * Generated class for the EfetivarDevolucoesPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
@@ -11,19 +10,16 @@ import { Devolucao } from '../../model/devolucaoModel';
 
 @IonicPage()
 @Component({
-  selector: 'page-devolucoes',
-  templateUrl: 'devolucoes.html',
+  selector: 'page-efetivar-devolucoes',
+  templateUrl: 'efetivar-devolucoes.html',
 })
-export class DevolucoesPage {
-
-  devolucao: Devolucao
+export class EfetivarDevolucoesPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.devolucao = new Devolucao();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DevolucoesPage');
+    console.log('ionViewDidLoad EfetivarDevolucoesPage');
   }
 
 }

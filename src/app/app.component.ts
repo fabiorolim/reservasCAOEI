@@ -6,9 +6,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from "../pages/login/login";
 import { EquipamentosPage } from "../pages/equipamentos/equipamentos";
-import { DevolucoesPage } from '../pages/devolucoes/devolucoes';
 import { ReservasPage } from '../pages/reservas/reservas';
 import { ReservastabPage } from '../pages/reservastab/reservastab';
+import { DevolucoestabPage } from '../pages/devolucoestab/devolucoestab';
 
 @Component({
   templateUrl: 'app.html'
@@ -29,7 +29,7 @@ export class MyApp {
       this.pages = [{ title: 'Login', component: LoginPage },
       { title: 'Equipamentos', component: EquipamentosPage },
       { title: 'Reservas', component: ReservastabPage },
-      { title: 'Devoluções', component: DevolucoesPage }];
+      { title: 'Devoluções', component: DevolucoestabPage }];
 
     });
   }

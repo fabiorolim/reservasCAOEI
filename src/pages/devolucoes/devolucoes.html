@@ -5,14 +5,45 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>devolucoes</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+  
+    <ion-navbar>
+      <ion-title>Devoluções</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  <ion-content>
+    <div padding>
+      <ion-segment [(ngModel)]="devolucao">
+        <ion-segment-button value="abertas">Abertas</ion-segment-button>
+        <ion-segment-button value="efetivadas">Efetivadas</ion-segment-button>
+      </ion-segment>
+    </div>
+    <div [ngSwitch]="devolucao">
+      <ion-list *ngSwitchCase="'abertas'">
+        <ion-item-sliding *ngFor="let dev of devolucoesAbertas | async">
+          <ion-item>
+            {{ dev.$key }}
+          </ion-item>
+          <ion-item-options side="right">
+            <button ion-button icon-only color="danger" (click)="deletarDevolucao(dev)">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+      <ion-list *ngSwitchCase="'efetivadas'">
+        <ion-item-sliding *ngFor="let dev of devolucoesEfetivadas | async">
+          <ion-item>
+            {{ dev.$key }}
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>
+      <!-- <ion-list *ngSwitchCase="'canceladas'">
+        <ion-item-sliding *ngFor="let res of reservasCanceladas | async">
+          <ion-item>
+            {{ res.$key }}
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list> -->
+    </div>
+  </ion-content>

@@ -5,6 +5,7 @@ import { User } from "../providers/auth/user";
 export class Reserva {
 
     $key?: string;
+    id?: string;
     equipamento: Equipamento;
     //Data atual em que está sendo feita a reserva
     data: Date;
@@ -20,9 +21,12 @@ export class Reserva {
     //aberta
     //efetivada
     //cancelada
+    //finalizada
+    dataEfetivada?: Date;
+    horaEfetivada?: Date;
     devolucao?: Devolucao;
     //Chave do usuário que faz a reserva
-    reservante?: User;
+    //reservante?: User;
     //Chave do usuário que entrega o produto
     efetivante?: User;
 

@@ -34,7 +34,7 @@
     </ion-list>
     <ion-list *ngSwitchCase="'efetivadas'">
       <ion-item-sliding *ngFor="let res of reservasEfetivadas | async">
-        <ion-item>
+        <ion-item (click)="devolver(res)">
           {{ res.$key }}
         </ion-item>
       </ion-item-sliding>
