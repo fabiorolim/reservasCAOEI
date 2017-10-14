@@ -23,7 +23,7 @@
     <ion-list *ngSwitchCase="'abertas'">
       <ion-item-sliding *ngFor="let res of reservasAbertas | async">
         <ion-item>
-          {{ res.$key }}
+          {{ res.$key }} - {{ res.equipamento.nome }}
         </ion-item>
         <ion-item-options side="right">
           <button ion-button icon-only color="danger" (click)="deletarReserva(res)">
@@ -35,14 +35,14 @@
     <ion-list *ngSwitchCase="'efetivadas'">
       <ion-item-sliding *ngFor="let res of reservasEfetivadas | async">
         <ion-item (click)="devolver(res)">
-          {{ res.$key }}
+          {{ res.$key }} - {{ res.equipamento.nome }}
         </ion-item>
       </ion-item-sliding>
     </ion-list>
     <ion-list *ngSwitchCase="'canceladas'">
       <ion-item-sliding *ngFor="let res of reservasCanceladas | async">
         <ion-item>
-          {{ res.$key }}
+          {{ res.$key }} - {{ res.equipamento.nome }}
         </ion-item>
       </ion-item-sliding>
     </ion-list>

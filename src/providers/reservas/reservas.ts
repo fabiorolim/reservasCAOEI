@@ -3,7 +3,7 @@ import 'rxjs/add/operator/map';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Reserva } from '../../model/reservasModel';
 import { AngularFireAuth } from "angularfire2/auth";
-import { DateTime } from 'ionic-angular';
+import { DateTime, AlertController } from 'ionic-angular';
 import { Equipamento } from '../../model/equipamentosModel';
 
 /*
@@ -19,7 +19,8 @@ export class ReservasProvider {
   //reservasEfetivas: FirebaseListObservable<Reserva[]>;
   private uid: string;
 
-  constructor(private db: AngularFireDatabase, private angularFireAuth: AngularFireAuth) {
+  constructor(private db: AngularFireDatabase, private angularFireAuth: AngularFireAuth,
+    public alert: AlertController) {
     // let database = db.database.app;
     // console.log("Database" + database.name);
     this.uid = this.angularFireAuth.auth.currentUser.uid;
@@ -46,6 +47,15 @@ export class ReservasProvider {
       }
       //reserva
     );
+  }
+
+  showAlertReservaSucess() {
+    let alerta = this.alert.create({
+      title: 'Reserva',
+      subTitle: 'Reserva efetuada com sucesso',
+      buttons: ['OK']
+    });
+    alerta.present();
   }
 
   calculaDisponibilidade(dataInicio: DateTime, dataFim: DateTime) {

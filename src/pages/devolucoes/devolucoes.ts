@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Devolucao } from '../../model/devolucaoModel';
+import { DevolucoesProvider } from '../../providers/devolucoes/devolucoes';
+import { FirebaseListObservable } from 'angularfire2/database';
 
 /**
  * Generated class for the DevolucoesPage page.
@@ -16,14 +18,24 @@ import { Devolucao } from '../../model/devolucaoModel';
 })
 export class DevolucoesPage {
 
-  devolucao: Devolucao
+  devolucao: Devolucao;
+  devolucoesAbertas: FirebaseListObservable<Devolucao[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private devolucoesProvider: DevolucoesProvider) {
     this.devolucao = new Devolucao();
+    this.initializeItems();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DevolucoesPage');
+  }
+
+  listarAbertas() {
+    this.devolucoesAbertas = this.devolucoesProvider.getAbertas();
+  }
+
+  initializeItems(){
+    this.listarAbertas();
   }
 
 }

@@ -23,6 +23,11 @@ export class DevolucoesProvider {
     console.log('Hello DevolucoesProvider Provider');
   }
 
+  getAbertas() {
+    this.devolucoes = this.db.list('/devolucoes/' + this.uid, { query: { orderByChild: 'status', equalTo: 'aberta' } });
+    return this.devolucoes;
+  }
+
   devolver(reserva: Reserva) {
     this.devolucoes = this.db.list('/devolucoes/' + this.uid);
     return this.devolucoes.push({
